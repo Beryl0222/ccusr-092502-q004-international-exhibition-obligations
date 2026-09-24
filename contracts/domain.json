@@ -1,0 +1,27 @@
+{
+  "service": "international-exhibition-obligations",
+  "entities": [
+    "agreement_version",
+    "obligation",
+    "crate_transfer",
+    "external_ack"
+  ],
+  "events": [
+    "OBLIGATION_ACCEPTED",
+    "EVIDENCE_SIGNED",
+    "CRATE_RELEASED",
+    "ACK_RECEIVED",
+    "CLOSURE_RECONCILED"
+  ],
+  "envelope": {
+    "required": [
+      "event_id",
+      "event_type",
+      "occurred_at",
+      "aggregate_id",
+      "version",
+      "payload"
+    ],
+    "version_minimum": 1
+  }
+}
