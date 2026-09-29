@@ -1,17 +1,86 @@
 {
   "service": "international-exhibition-obligations",
-  "entities": [
-    "agreement_version",
-    "obligation",
-    "crate_transfer",
-    "external_ack"
-  ],
+  "description": "国际联展交付责任链：将协议拆成带责任方、期限、前置证据与可接受替代方案的承诺，并管理借展目录、状态报告、权利许可、箱件交接、专家会议与对外发布。",
+  "aggregates": {
+    "agreement_version": {
+      "description": "某一版协议文本。被取代的版本不可因迟到确认复活；取消只冻结现状，不删除历史。",
+      "states": ["DRAFT", "ACTIVE", "SUPERSEDED", "CANCELLED"]
+    },
+    "obligation": {
+      "description": "从协议拆出的单条承诺。带唯一责任方、截止时间、前置证据要求与可接受替代证据类型。",
+      "states": ["PENDING", "RELEASABLE", "RELEASED", "BLOCKED", "DISPENSED", "RECOVERED", "CANCELLED"]
+    },
+    "loan_object": {
+      "description": "借展目录中的单件文物或数字复制品；数字复制品在物理性的 COLLECTION 与 TRANSPORT 两道确认上标记不适用，其余流程一致。",
+      "states": ["LISTED", "READY", "PACKED", "IN_TRANSIT", "DELIVERED", "RETURNED", "CANCELLED"]
+    },
+    "crate_transfer": {
+      "description": "箱件：文物的物理移动单元，也是条件过期或未满足时的暂停对象。三职责分别确认后才可移交；任一关联承诺过期只暂停该箱件与关联公布版本，不影响其他箱件。",
+      "states": ["ASSEMBLED", "HOLD_PENDING_CONDITIONS", "READY_TO_HANDOVER", "RELEASED_TO_CARRIER", "DELIVERED", "RETURNED", "CANCELLED"]
+    },
+    "specialist_invitation": {
+      "description": "专家会议邀请与回执管理。",
+      "states": ["ISSUED", "ACCEPTED", "DECLINED", "REISSUED", "CANCELLED"]
+    },
+    "publication": {
+      "description": "对外发布版本（宣传素材、新闻稿等）。受承诺条件门控：条件未满足或过期时暂停，满足后方可发布。",
+      "states": ["DRAFT", "HELD", "APPROVED_FOR_RELEASE", "PUBLISHED", "SUPERSEDED", "CANCELLED"]
+    },
+    "external_ack": {
+      "description": "按外部编号去重；内容冲突转人工协调，不以到达顺序定真假；同一 ack_ref 以首次内容为基准，后续不同内容都进入冲突队列。",
+      "states": ["RECEIVED", "DUPLICATE_DISCARDED", "IN_CONFLICT", "RESOLVED"]
+    },
+    "coordination_case": {
+      "description": "内容冲突等需人工协调的案件。裁决结果作为后续事件追加，不改写原始回执。",
+      "states": ["OPEN", "RESOLVED"]
+    }
+  },
   "events": [
+    "AGREEMENT_DRAFTED",
+    "AGREEMENT_ACTIVATED",
+    "AGREEMENT_SUPERSEDED",
+    "AGREEMENT_CANCELLED",
     "OBLIGATION_ACCEPTED",
     "EVIDENCE_SIGNED",
+    "ALTERNATIVE_EVIDENCE_APPLIED",
+    "OBLIGATION_EXPIRED",
+    "OBJECT_LISTED",
+    "OBJECT_PACKED_INTO_CRATE",
+    "CRATE_ASSEMBLED",
+    "CRATE_CONFIRMED_BY_COLLECTION",
+    "CRATE_CONFIRMED_BY_INSURANCE",
+    "CRATE_CONFIRMED_BY_TRANSPORT",
     "CRATE_RELEASED",
+    "CRATE_DELIVERED",
+    "CRATE_RETURNED",
+    "CRATE_CANCELLED",
+    "INVITATION_ISSUED",
+    "INVITATION_ACKNOWLEDGED",
+    "INVITATION_REISSUED",
+    "INVITATION_CANCELLED",
+    "PUBLICATION_DRAFTED",
+    "PUBLICATION_HELD",
+    "PUBLICATION_HOLD_LIFTED",
+    "PUBLICATION_APPROVED_FOR_RELEASE",
+    "PUBLICATION_PUBLISHED",
+    "PUBLICATION_SUPERSEDED",
+    "PUBLICATION_CANCELLED",
     "ACK_RECEIVED",
+    "ACK_DUPLICATE_DISCARDED",
+    "ACK_CONFLICT_ESCALATED",
+    "COORDINATION_RESOLVED",
     "CLOSURE_RECONCILED"
+  ],
+  "responsibility_roles": ["COLLECTION", "INSURANCE", "TRANSPORT"],
+  "evidence_kinds": [
+    "STATUS_REPORT",
+    "RIGHTS_LICENSE",
+    "CONDITION_REPORT",
+    "INSURANCE_CERTIFICATE",
+    "HANDOVER_MANIFEST",
+    "PROMO_MATERIAL_APPROVAL",
+    "SPECIALIST_AVAILABILITY",
+    "DIGITAL_REPRODUCTION_CERTIFICATE"
   ],
   "envelope": {
     "required": [
