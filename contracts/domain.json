@@ -4,24 +4,71 @@
     "agreement_version",
     "obligation",
     "crate_transfer",
-    "external_ack"
+    "external_ack",
+    "evidence_record",
+    "custody_event",
+    "publication"
   ],
   "events": [
+    "AGREEMENT_VERSION_RECORDED",
+    "AGREEMENT_VERSION_SUPERSEDED",
+    "AGREEMENT_VERSION_CANCELLED",
+    "OBLIGATION_DEFINED",
     "OBLIGATION_ACCEPTED",
-    "EVIDENCE_SIGNED",
+    "OBLIGATION_EXPIRED",
+    "EVIDENCE_SUBMITTED",
+    "EVIDENCE_REVIEWED",
+    "CRATE_LISTED",
+    "CRATE_LINKED",
+    "CRATE_GATE_SIGNED",
     "CRATE_RELEASED",
+    "CRATE_HANDED_OVER",
+    "CRATE_SUSPENDED",
+    "CRATE_RESUMED",
     "ACK_RECEIVED",
+    "ACK_CONFLICT_FLAGGED",
+    "ACK_RESOLVED",
+    "PUBLICATION_APPROVED",
+    "PUBLICATION_SUSPENDED",
     "CLOSURE_RECONCILED"
+  ],
+  "responsibilities": [
+    "COLLECTION",
+    "INSURANCE",
+    "TRANSPORT"
+  ],
+  "evidence_status": [
+    "SUBMITTED",
+    "ACCEPTED",
+    "REJECTED"
+  ],
+  "crate_status": [
+    "LISTED",
+    "READY",
+    "RELEASED",
+    "IN_TRANSIT",
+    "DELIVERED",
+    "SUSPENDED",
+    "CANCELLED"
+  ],
+  "ack_status": [
+    "RECEIVED",
+    "CONFLICT",
+    "RESOLVED"
   ],
   "envelope": {
     "required": [
       "event_id",
       "event_type",
-      "occurred_at",
+    "occurred_at",
       "aggregate_id",
       "version",
       "payload"
     ],
-    "version_minimum": 1
+    "version_minimum": 1,
+    "notes": [
+      "业务事实一经接收不得原地改写，更正一律以追加事件表达。",
+      "occurred_at 必须携带时区，跨时区迟到消息按记录时间裁决，不按到达顺序裁决。"
+    ]
   }
 }

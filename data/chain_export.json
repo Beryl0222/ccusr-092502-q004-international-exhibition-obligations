@@ -1,0 +1,342 @@
+{
+  "generated_at": "2026-10-06T09:00:00+08:00",
+  "versions": [
+    {
+      "ref": "V1",
+      "title": "国际联展合作备忘录 V1",
+      "status": "SUPERSEDED",
+      "recorded_at": "2026-09-20T09:00:00+08:00",
+      "superseded_by": "V2",
+      "cancelled_at": null,
+      "cancel_reason": null
+    },
+    {
+      "ref": "V2",
+      "title": "国际联展合作备忘录 V2（撤换一件展品）",
+      "status": "RECORDED",
+      "recorded_at": "2026-10-06T09:00:00+08:00",
+      "superseded_by": null,
+      "cancelled_at": null,
+      "cancel_reason": null
+    }
+  ],
+  "obligations": [
+    {
+      "code": "OBL-CAT",
+      "version_ref": "V1",
+      "title": "借展目录与状态报告",
+      "responsible_party": "文博机构馆藏部",
+      "role": "COLLECTION",
+      "deadline": "2026-09-27T09:00:00+08:00",
+      "state": "FULFILLED",
+      "prerequisite_codes": [],
+      "alternatives": [],
+      "linked_crates": [],
+      "accepted_evidence": [
+        "EV-CAT-1"
+      ]
+    },
+    {
+      "code": "OBL-COL",
+      "version_ref": "V1",
+      "title": "借展物件状况报告",
+      "responsible_party": "文博机构馆藏部",
+      "role": "COLLECTION",
+      "deadline": "2026-09-30T09:00:00+08:00",
+      "state": "FULFILLED",
+      "prerequisite_codes": [
+        "OBL-CAT"
+      ],
+      "alternatives": [],
+      "linked_crates": [
+        "CR-01",
+        "CR-02"
+      ],
+      "accepted_evidence": [
+        "EV-COL-1"
+      ]
+    },
+    {
+      "code": "OBL-INS",
+      "version_ref": "V1",
+      "title": "门到门保险生效",
+      "responsible_party": "联盟指定保险经纪人",
+      "role": "INSURANCE",
+      "deadline": "2026-10-02T09:00:00+08:00",
+      "state": "FULFILLED",
+      "prerequisite_codes": [],
+      "alternatives": [
+        {
+          "code": "ALT-BINDER",
+          "description": "临时承保 binder + 7 日内补正正式保单"
+        }
+      ],
+      "linked_crates": [
+        "CR-01",
+        "CR-02"
+      ],
+      "accepted_evidence": [
+        "EV-INS-2"
+      ]
+    },
+    {
+      "code": "OBL-TRN",
+      "version_ref": "V1",
+      "title": "专业艺术品运输安排",
+      "responsible_party": "国际运输承运商",
+      "role": "TRANSPORT",
+      "deadline": "2026-10-04T09:00:00+08:00",
+      "state": "FULFILLED",
+      "prerequisite_codes": [],
+      "alternatives": [],
+      "linked_crates": [
+        "CR-01",
+        "CR-02"
+      ],
+      "accepted_evidence": [
+        "EV-TRN-1"
+      ]
+    },
+    {
+      "code": "OBL-RIGHTS",
+      "version_ref": "V1",
+      "title": "数字复制品与宣传素材权利许可",
+      "responsible_party": "联盟宣传部",
+      "role": null,
+      "deadline": "2026-10-04T09:00:00+08:00",
+      "state": "FULFILLED",
+      "prerequisite_codes": [],
+      "alternatives": [],
+      "linked_crates": [],
+      "accepted_evidence": [
+        "EV-RGT-1"
+      ]
+    },
+    {
+      "code": "OBL-CUST",
+      "version_ref": "V1",
+      "title": "文物出境许可批件",
+      "responsible_party": "文博机构合规处",
+      "role": "TRANSPORT",
+      "deadline": "2026-10-02T09:00:00+08:00",
+      "state": "FULFILLED_ALTERNATIVE",
+      "prerequisite_codes": [],
+      "alternatives": [
+        {
+          "code": "ALT-EBOND",
+          "description": "对方海关电子担保函，14 日内补正正式批件"
+        }
+      ],
+      "linked_crates": [
+        "CR-02"
+      ],
+      "accepted_evidence": [
+        "EV-CUST-ALT"
+      ]
+    }
+  ],
+  "crates": [
+    {
+      "code": "CR-01",
+      "description": "青铜器借展箱件 CR-01",
+      "version_ref": "V1",
+      "version_status": "SUPERSEDED",
+      "status": "DELIVERED",
+      "releasable": false,
+      "blocking_reasons": [],
+      "suspensions": [],
+      "gates": {
+        "COLLECTION": {
+          "label": "馆藏",
+          "obligation_code": "OBL-COL",
+          "obligation_state": "FULFILLED",
+          "responsible_party": "文博机构馆藏部",
+          "evidence_ref": "EV-COL-1",
+          "evidence_reviewer": "联络员 陈洁",
+          "signed": true,
+          "signer": "馆藏主管 高岩",
+          "signed_at": "2026-09-20T09:00:00+08:00"
+        },
+        "INSURANCE": {
+          "label": "保险",
+          "obligation_code": "OBL-INS",
+          "obligation_state": "FULFILLED",
+          "responsible_party": "联盟指定保险经纪人",
+          "evidence_ref": "EV-INS-2",
+          "evidence_reviewer": "联络员 陈洁",
+          "signed": true,
+          "signer": "保险主管 孟真",
+          "signed_at": "2026-09-20T09:00:00+08:00"
+        },
+        "TRANSPORT": {
+          "label": "运输",
+          "obligation_code": "OBL-TRN",
+          "obligation_state": "FULFILLED",
+          "responsible_party": "国际运输承运商",
+          "evidence_ref": "EV-TRN-1",
+          "evidence_reviewer": "联络员 陈洁",
+          "signed": true,
+          "signer": "运输主管 韩启",
+          "signed_at": "2026-09-20T09:00:00+08:00"
+        }
+      },
+      "released_at": "2026-09-20T09:00:00+08:00",
+      "current_custodian": "古城联盟场馆组",
+      "current_location": "联盟展厅入库区",
+      "insurance_party": "联盟场馆自保单元",
+      "custody_chain": [
+        {
+          "custodian": "借出机构馆藏处",
+          "location": "借出机构库房",
+          "at": "2026-09-20T09:00:00+08:00",
+          "kind": "ORIGIN"
+        },
+        {
+          "custodian": "承运商押运组",
+          "location": "文博机构出库月台",
+          "at": "2026-09-20T09:00:00+08:00",
+          "insurance_party": "联盟指定保险经纪人",
+          "final": false,
+          "kind": "HANDOVER"
+        },
+        {
+          "custodian": "古城联盟场馆组",
+          "location": "联盟展厅入库区",
+          "at": "2026-09-22T09:00:00+08:00",
+          "insurance_party": "联盟场馆自保单元",
+          "final": true,
+          "kind": "HANDOVER"
+        }
+      ]
+    },
+    {
+      "code": "CR-02",
+      "description": "青铜器借展箱件 CR-02",
+      "version_ref": "V1",
+      "version_status": "SUPERSEDED",
+      "status": "DELIVERED",
+      "releasable": false,
+      "blocking_reasons": [],
+      "suspensions": [],
+      "gates": {
+        "COLLECTION": {
+          "label": "馆藏",
+          "obligation_code": "OBL-COL",
+          "obligation_state": "FULFILLED",
+          "responsible_party": "文博机构馆藏部",
+          "evidence_ref": "EV-COL-1",
+          "evidence_reviewer": "联络员 陈洁",
+          "signed": true,
+          "signer": "馆藏主管 高岩",
+          "signed_at": "2026-10-03T09:00:00+08:00"
+        },
+        "INSURANCE": {
+          "label": "保险",
+          "obligation_code": "OBL-INS",
+          "obligation_state": "FULFILLED",
+          "responsible_party": "联盟指定保险经纪人",
+          "evidence_ref": "EV-INS-2",
+          "evidence_reviewer": "联络员 陈洁",
+          "signed": true,
+          "signer": "保险主管 孟真",
+          "signed_at": "2026-10-03T09:00:00+08:00"
+        },
+        "TRANSPORT": {
+          "label": "运输",
+          "obligation_code": "OBL-TRN",
+          "obligation_state": "FULFILLED",
+          "responsible_party": "国际运输承运商",
+          "evidence_ref": "EV-TRN-1",
+          "evidence_reviewer": "联络员 陈洁",
+          "signed": true,
+          "signer": "运输主管 韩启",
+          "signed_at": "2026-10-03T09:00:00+08:00"
+        }
+      },
+      "released_at": "2026-10-03T09:00:00+08:00",
+      "current_custodian": "古城联盟场馆组",
+      "current_location": "联盟展厅入库区",
+      "insurance_party": "联盟场馆自保单元",
+      "custody_chain": [
+        {
+          "custodian": "借出机构馆藏处",
+          "location": "借出机构库房",
+          "at": "2026-09-20T09:00:00+08:00",
+          "kind": "ORIGIN"
+        },
+        {
+          "custodian": "承运商押运组",
+          "location": "文博机构出库月台",
+          "at": "2026-10-03T09:00:00+08:00",
+          "insurance_party": "联盟指定保险经纪人",
+          "final": false,
+          "kind": "HANDOVER"
+        },
+        {
+          "custodian": "古城联盟场馆组",
+          "location": "联盟展厅入库区",
+          "at": "2026-10-05T09:00:00+08:00",
+          "insurance_party": "联盟场馆自保单元",
+          "final": true,
+          "kind": "HANDOVER"
+        }
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "material_ref": "PRESS-KIT-1",
+      "version_ref": "V1",
+      "channel": "双方官网与社交媒体",
+      "approved_at": "2026-09-22T09:00:00+08:00",
+      "suspended": false,
+      "suspensions": []
+    }
+  ],
+  "acks": [
+    {
+      "external_ref": "ACK-7781",
+      "state": "RECEIVED",
+      "first_sender": "古城联盟秘书处",
+      "first_received_at": "2026-09-20T09:00:00+08:00",
+      "declared_version_ref": "V1",
+      "effective_content": {
+        "decision": "ACCEPT",
+        "obligation": "OBL-CAT"
+      },
+      "contender_count": 0,
+      "resolution": null,
+      "resolved_by": null
+    },
+    {
+      "external_ref": "ACK-9002",
+      "state": "RESOLVED",
+      "first_sender": "联盟秘书 A",
+      "first_received_at": "2026-09-22T06:00:00+08:00",
+      "declared_version_ref": "V1",
+      "effective_content": {
+        "press_release": "APPROVED",
+        "caption": "古城联展"
+      },
+      "contender_count": 1,
+      "resolution": "FIRST",
+      "resolved_by": "项目联络处 陈洁"
+    },
+    {
+      "external_ref": "ACK-LATE-V1",
+      "state": "RECEIVED",
+      "first_sender": "古城联盟秘书处（夜班补发）",
+      "first_received_at": "2026-09-20T22:00:00-05:00",
+      "declared_version_ref": "V1",
+      "effective_content": {
+        "decision": "ACCEPT",
+        "obligation": "OBL-CAT",
+        "note": "迟到 3 周"
+      },
+      "contender_count": 0,
+      "resolution": null,
+      "resolved_by": null
+    }
+  ],
+  "manual_queue": []
+}
